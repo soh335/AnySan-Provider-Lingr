@@ -7,7 +7,6 @@ use Encode qw/encode_utf8/;
 use Log::Minimal;
 use Path::Class;
 use File::Spec;
-use File::Temp;
 
 my $config = pit_get("lingr.com", require => {
     user => "user",
