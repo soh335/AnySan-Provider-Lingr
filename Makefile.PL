@@ -26,7 +26,12 @@ use inc::Module::Install;
 
 all_from 'lib/AnySan/Provider/Lingr.pm';
 
-rquires 'AnyEvent::WebService::Lingr';
+requires 'AnySan';
+requires 'AnyEvent::WebService::Lingr';
+requires 'Coro';
+requires 'Coro::Timer';
+requires 'Carp';
+requires 'Try::Tiny';
 
 test_requires 'Test::More'     => '0.88';
 test_requires 'Test::Requires' => '0.06';
