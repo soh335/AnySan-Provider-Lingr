@@ -61,8 +61,16 @@ sub lingr {
             }
             catch {
                 warn $_;
-                $self->_destory_session;
-                $session = undef;
+                try {
+                    $self->_destory_session;
+                }
+                catch {
+                    $self->{client}{session} = undef;
+                    warn $_;
+                }
+                finally {
+                    $session = undef;
+                };
 
                 if ( $self->{config}{auto_reconnect} ) {
                     Coro::Timer::sleep $self->{config}{reconnect_interval};
